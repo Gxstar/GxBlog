@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿星的小站</title>
+    <!-- 静态资源引用 -->
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/js/popper.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/main.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header>
+            <!-- 电脑模式导航 -->
+            <hgroup class="d-none d-sm-block"></hgroup>
+            <!-- 移动端导航 -->
+            <hgroup class="d-sm-none"></hgroup>
+        </header>
+    </div>
+</body>
+</html>
