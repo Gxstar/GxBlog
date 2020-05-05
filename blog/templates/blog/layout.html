@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阿星的小站</title>
     <!-- 静态资源引用 -->
-    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
-    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
-    <script src="{% static 'blog/js/popper.js' %}"></script>
-    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{% static 'blog/js/main.js' %}"></script>
 </head>
 <body>
@@ -18,10 +18,21 @@
         <!-- 头部导航 -->
         <header>
             <!-- 电脑模式导航 -->
-            <hgroup class="d-none d-sm-block"></hgroup>
+            <hgroup class="d-none d-sm-block">
+                <nav>
+                    <ul class="nav nav-pills float-right">
+                        <li class="nav-item"><a href="." class="nav-link active">首页</a></li>
+                        {% for category in CategoryList %}
+                        <li class="nav-item"><a href="." class="nav-link">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <h3><a href="."><img src="{% static 'blog/img/logo.png' %}"/></a></h3>
+            </hgroup>
             <!-- 移动端导航 -->
-            <hgroup class="d-sm-none"></hgroup>
+            <hgroup class="d-sm-none">这是移动端导航</hgroup>
         </header>
+        
     </div>
 </body>
 </html>
