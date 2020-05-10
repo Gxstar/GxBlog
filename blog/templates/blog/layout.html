@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>阿星的小站</title>
+    <link href="{% static 'blog/img/favicon.ico' %}" rel="icon" type="image/x-ico">
     <!-- 静态资源引用 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
@@ -46,8 +47,8 @@
         
         <!-- 主体 -->
         <div class="row tbody">
-            <div class="col-md-8">左边</div>
-            <div class="col-md-4">右边</div>
+            <div class="col-md-8">{% block content %}{% endblock %}</div>
+            <div class="col-md-4">{% include "blog/sidebar.html" %}</div>
         </div>
         
     </div>

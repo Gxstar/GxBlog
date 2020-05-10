@@ -1,0 +1,17 @@
+{% load static %}
+<figure class="figure text-center">
+    <img src="{% static 'blog/img/头像.jpg' %}" alt="头像" class="img-fluid rounded" style="width:35%;">
+    <figcaption class="figure-caption">{{user.username}}</figcaption>
+</figure>
+<h5>文章分类</h5>
+<p style="line-height: 2rem;">
+{% for category in CategoryList %}
+<a href="." class="btn btn-light">{{category.name}}</a>
+{% endfor %}
+</p>
+<h5>标签</h5>
+<p style="line-height: 2rem;">
+{% for category in CategoryList %}
+<a href="." class="btn btn-light">{{category.name}}</a>
+{% endfor %}
+</p>
