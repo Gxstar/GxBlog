@@ -25,7 +25,7 @@ SECRET_KEY = 'idwf%6v@4@i3bta^teqe#c!hpt^gg5u3n*v7$==qtk++=01ir6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['121.196.12.157','127.0.0.1','172.16.91.26']
+ALLOWED_HOSTS = ['121.196.12.157','127.0.0.1','172.16.91.26','www.gxstar123.cn','gxstar123.cn']
 
 
 # Application definition
