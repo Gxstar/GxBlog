@@ -8,9 +8,6 @@
     <div class="col-md-7">
         <h5><strong><a href=".">{{article.title}}</a></strong></h5>
         <p class="info"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time>
-        {% ifequal user article.author %}
-            <span> • </span><a href=".">编辑</a>
-        {% endifequal %}
         </small>
         </p>
         <p><small>{{article.info}}</small></p>
