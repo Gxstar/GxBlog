@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 def home(request):
     AllCategory=Category.objects.all()
     PostCount=Article.objects.count()
-    PageCount=int(PostCount/5)
+    PageCount=int(PostCount/5)+1
     context={
         'CategoryList':AllCategory
     }
     context['PostCount']=PostCount
-    context['PageCount']=PageCount
+    context['PageCountList']=list(range(1,PageCount+1))
     if request.method=='GET':
         page=request.GET.get('page')
         if page==None:

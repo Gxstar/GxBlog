@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['121.196.12.157','127.0.0.1','172.16.91.26','www.gxstar123.cn',
 # Application definition
 
 INSTALLED_APPS = [
-    'simpleui',
+    # 'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,4 +127,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
