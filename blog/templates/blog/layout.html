@@ -9,45 +9,49 @@
     <!-- 静态资源引用 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <!-- bootstrap相关js文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+        <!-- 电脑模式导航 -->
+        <hgroup class="d-none d-sm-block" style="padding-top: 15px;">
+            <nav>
+                <ul class="nav nav-pills float-right" style="padding: 10px;">
+                    <li class="nav-item"><a href="{% url 'blogHome'%}" class="nav-link active">首页</a></li>
+                    {% for category in CategoryList %}
+                    <li class="nav-item"><a href="." class="nav-link">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <h3><a href="{% url 'blogHome'%}"><img style="height: 64px;" src="{% static 'blog/img/logo.png' %}"/></a></h3>
+        </hgroup>
+        <!-- 移动端导航 -->
+        <hgroup class="bg-light">
+            <nav class="d-sm-none navbar navbar-light navbar-expand-md">
+                <a href="{% url 'blogHome'%}" class="navbar-brand">阿星的小站</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#headlist" aria-expanded="false" aria-controls="headlist">
+                    <span class="navbar-toggler-icon"></span>
+                </button>                
+            </nav>
+            <div class="collapse navbar navbar-collapse" id="headlist">
+                <ul class="navbar-nav">
+                    {% for category in CategoryList %}
+                    <li class="nav-item"><a href="." class="nav-link" style="color:rgba(0,0,0.9);">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </hgroup>
+        </div>
+    </header>
     <div class="container">
-        <!-- 头部导航 -->
-        <header>
-            <!-- 电脑模式导航 -->
-            <hgroup class="d-none d-sm-block" style="padding-top: 15px;">
-                <nav>
-                    <ul class="nav nav-pills float-right" style="padding: 10px;">
-                        <li class="nav-item"><a href="." class="nav-link active">首页</a></li>
-                        {% for category in CategoryList %}
-                        <li class="nav-item"><a href="." class="nav-link">{{category.name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-                <h3><a href="."><img style="height: 64px;" src="{% static 'blog/img/logo.png' %}"/></a></h3>
-                <hr>
-            </hgroup>
-            <!-- 移动端导航 -->
-            <hgroup class="bg-light">
-                <nav class="d-sm-none navbar navbar-light navbar-expand-md">
-                    <a href="." class="navbar-brand">阿星的小站</a>
-                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#headlist" aria-expanded="false" aria-controls="headlist">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>                
-                </nav>
-                <div class="collapse navbar navbar-collapse" id="headlist">
-                    <ul class="navbar-nav">
-                        {% for category in CategoryList %}
-                        <li class="nav-item"><a href="." class="nav-link" style="color:rgba(0,0,0.9);">{{category.name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </hgroup>
-        </header>
-        
         <!-- 主体 -->
         <div class="row tbody justify-content-between">
-            <div class="col-md-8">{% block content %}{% endblock %}</div>
+            <div class="col-md-8 content">{% block content %}{% endblock %}</div>
             <div class="col-md-3">{% include "blog/sidebar.html" %}</div>
         </div>
         <hr>
@@ -56,12 +60,5 @@
             {% include "blog/footer.html" %}
         </footer>
     </div>
-
-    <!-- bootstrap相关js文件 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'blog/js/main.js' %}"></script>
 </body>
-
 </html>

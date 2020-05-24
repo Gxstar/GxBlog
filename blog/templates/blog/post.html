@@ -1,0 +1,10 @@
+{% extends "blog/layout.html" %}
+{% block content %}
+<h3 class="text-primary">{{article.title}}</h3>
+<p class="info">
+    <a href=".">{{article.author.username}}</a><span> | &nbsp;分类：</span><a href=".">{{article.category}}</a><span> |&nbsp;更新于：</span><time>{{article.updateTime}}</time>
+</p>
+<article>
+    {{article.body|safe}}
+</article>
+{% endblock %}

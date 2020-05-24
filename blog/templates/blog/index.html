@@ -1,12 +1,13 @@
 {% extends "blog/layout.html" %}
+{% load static %}
 {% block content %}
 {% for article in ArticleList %}
 <article class="row">
     <div class="col-md-5">
-        <a href="."><img src="{{article.cover}}" alt="{{article.title}}" class="img-thumbnail"></a>
+        <a href="{% url 'showPost' article.id %}"><img src="{{article.cover}}" alt="{{article.title}}" class="img-thumbnail"></a>
     </div>
     <div class="col-md-7">
-        <h5><strong><a href=".">{{article.title}}</a></strong></h5>
+        <h5><strong><a href="{% url 'showPost' article.id %}">{{article.title}}</a></strong></h5>
         <p class="info"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time>
         </small>
         </p>
@@ -15,21 +16,23 @@
 </article>
 <hr>
 {% endfor %}
+<!-- 分页 -->
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
+      <li class="page-item" id="FrontPage">
         <a class="page-link" href="#" tabindex="-1">上一页</a>
       </li>
       {% for page in PageCountList %}
       <li id="{{page}}" class="page-item"><a class="page-link" href="./?page={{page}}">{{page}}</a></li>
       {% endfor %}
-      <li class="page-item">
+      <li class="page-item" id="BackPage">
         <a class="page-link" href="#">下一页</a>
       </li>
     </ul>
 </nav>
 <script>
-    var ActivePage="{{ActivePage}}";
-    
+    var ActivePage=parseInt("{{ActivePage}}");
+    var TotalPage=parseInt("{{PageCount}}");
 </script>
+<script src="{% static 'blog/js/main.js' %}"></script>
 {% endblock %}

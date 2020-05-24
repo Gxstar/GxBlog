@@ -10,6 +10,7 @@ def home(request):
         'CategoryList':AllCategory
     }
     context['PostCount']=PostCount
+    context['PageCount']=PageCount
     context['PageCountList']=list(range(1,PageCount+1))
     if request.method=='GET':
         page=request.GET.get('page')
@@ -24,7 +25,7 @@ def home(request):
         # 提取文章前128个字节作为简介
         for index,val in enumerate(ArticleList):
             bs=BeautifulSoup(val.body,"lxml")
-            i=bs.get_text().strip()[0:255]
+            i=bs.get_text().strip()[0:127]
             ArticleList[index].info=i
         # 给需要的参数赋值
         context['ArticleList']=ArticleList
@@ -32,4 +33,11 @@ def home(request):
         return render(request,'blog/index.html',context)
     else:
         pass
-    
+def showPost(request,article_id):
+    AllCategory=Category.objects.all()
+    article=Article.objects.get(id=article_id)
+    context={
+        'CategoryList':AllCategory,
+        'article':article
+    }
+    return render(request,'blog/post.html',context)
