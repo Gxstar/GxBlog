@@ -22,10 +22,10 @@ def home(request):
         else:
             pass
         ArticleList=Article.objects.all()[(0+5*(page-1)):(4+5*(page-1))]
-        # 提取文章前128个字节作为简介
+        # 提取文章前100个字节作为简介
         for index,val in enumerate(ArticleList):
             bs=BeautifulSoup(val.body,"lxml")
-            i=bs.get_text().strip()[0:127]
+            i=bs.get_text().strip()[0:100]
             ArticleList[index].info=i
         # 给需要的参数赋值
         context['ArticleList']=ArticleList

@@ -16,9 +16,7 @@ header{
 .content{
   background-color: #fff;
   border: 1px solid #ddd;
-  padding-top:30px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding:20px 10px;
 }
 .content img{
   max-width:100% !important;

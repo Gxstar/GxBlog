@@ -51,8 +51,8 @@
     <div class="container">
         <!-- 主体 -->
         <div class="row tbody justify-content-between">
-            <div class="col-md-8 content">{% block content %}{% endblock %}</div>
-            <div class="col-md-3">{% include "blog/sidebar.html" %}</div>
+            <div class="col-md-8">{% block content %}{% endblock %}</div>
+            <div class="col-md-3 d-none d-sm-block">{% include "blog/sidebar.html" %}</div>
         </div>
         <hr>
         <!-- 尾部 -->
