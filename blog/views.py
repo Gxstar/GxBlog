@@ -4,11 +4,13 @@ from bs4 import BeautifulSoup
 # Create your views here.
 def home(request):
     AllCategory=Category.objects.all()
+    AllTag=Tag.objects.all()
+    context={
+        'CategoryList':AllCategory,
+        'TagList':AllTag
+    }
     PostCount=Article.objects.count()
     PageCount=int(PostCount/5)+1
-    context={
-        'CategoryList':AllCategory
-    }
     context['PostCount']=PostCount
     context['PageCount']=PageCount
     context['PageCountList']=list(range(1,PageCount+1))
@@ -33,11 +35,17 @@ def home(request):
         return render(request,'blog/index.html',context)
     else:
         pass
+# 文章展示页面
 def showPost(request,article_id):
     AllCategory=Category.objects.all()
+    AllTag=Tag.objects.all()
     article=Article.objects.get(id=article_id)
     context={
         'CategoryList':AllCategory,
+        'TagList':AllTag,
         'article':article
     }
     return render(request,'blog/post.html',context)
+# 分类展示页面
+def showCate(request,category_id):
+    pass
