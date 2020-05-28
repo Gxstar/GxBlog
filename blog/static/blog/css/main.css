@@ -21,3 +21,17 @@ header{
 .content img{
   max-width:100% !important;
 }
+.postheader{
+  height: 300px;
+  position: relative;
+}
+.backpost{
+  background-color: black;
+  opacity: 0.6;
+  z-index: 1;
+}
+.backpost>h3{
+  position: absolute;
+  bottom: 0;
+  text-shadow: 0px 1px 4px #000;
+}
