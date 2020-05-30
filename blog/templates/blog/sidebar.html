@@ -20,21 +20,21 @@
 {% else %}
 <div class="card">
     <div class="card-header">Hello</div>
-        <figure class="figure card-body">
-            <img src="{% static 'blog/img/welcome.png' %}" alt="头像" class="img-fluid rounded">
-            <figcaption class="figure-caption text-center">欢迎</figcaption>
-        </figure>
+    <figure class="figure card-body">
+        <img src="{% static 'blog/img/welcome.png' %}" alt="头像" class="img-fluid rounded">
+        <figcaption class="figure-caption text-center">欢迎</figcaption>
+    </figure>
 </div>
 {% endif %}
 <h5 class="text-info">文章分类</h5>
-<p>
+<p style="line-height: 3rem;">
 {% for category in CategoryList %}
-<a href="." class="btn btn-light">{{category.name}}</a>
+<a href="{% url 'showCate' category.id %}" class="btn btn-light">{{category.name}}</a>
 {% endfor %}
 </p>
 <h5 class="text-info">标签</h5>
-<p>
+<p style="line-height: 3rem;">
 {% for tag in TagList %}
-<a href="." class="btn btn-light">{{tag.name}}</a>
+<a href="{% url 'showTag' tag.id %}" class="btn btn-light">{{tag.name}}</a>
 {% endfor %}
 </p>

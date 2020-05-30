@@ -2,13 +2,11 @@
 {% block content %}
 <article style="padding: 2rem;">
 <header class="postheader">
-    <div class="backpost">
     <h3 class="text-light">{{article.title}}</h3>
-</div>
 </header>
 <div class="content">
-    <p class="info">
-        <a href=".">{{article.author.username}}</a><span> | &nbsp;分类：</span><a href=".">{{article.category}}</a><span> |&nbsp;更新于：</span><time>{{article.updateTime}}</time>
+    <p class="info text-muted">
+        <span>作者：</span><a href="." class="text-muted">{{article.author.username}}</a><span> | &nbsp;分类：</span><a href="." class="text-muted">{{article.category}}</a><span> |&nbsp;更新于：</span><time>{{article.updateTime}}</time>
     </p>
     <section>
         {{article.body|safe}}
@@ -16,6 +14,6 @@
 </div>
 </article>
 <script>
-    $(".postheader").css({'background-image':'url({{article.cover}})',});
+    $(".postheader").css({'background':'url({{article.cover}}) no-repeat','background-size':'cover','margin-bottom':'0px'});
 </script>
 {% endblock %}

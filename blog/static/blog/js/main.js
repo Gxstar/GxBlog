@@ -12,4 +12,8 @@ $(function(){
     var BackPage=ActivePage+1;
     $("#FrontPage>a").attr("href",`./?page=${FrontPage}`);
     $("#BackPage>a").attr("href",`./?page=${BackPage}`);
+    //设置首页封面宽高比
+    var imgwidth=$(".content img").css("width");
+    imgwidth=parseFloat(imgwidth)
+    $(".content img").css("height",imgwidth*0.75);
  });
