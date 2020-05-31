@@ -20,11 +20,11 @@
         <div class="container">
         <!-- 电脑模式导航 -->
         <hgroup class="d-none d-sm-block" style="padding-top: 15px;">
-            <nav>
+            <nav id="navbar">
                 <ul class="nav nav-pills float-right" style="padding: 10px;">
-                    <li class="nav-item"><a href="{% url 'blogHome'%}" class="nav-link active">首页</a></li>
+                    <li class="nav-item"><a href="{% url 'blogHome'%}" class="nav-link" id="index">首页</a></li>
                     {% for category in CategoryList %}
-                    <li class="nav-item"><a href="{% url 'showCate' category.id %}" class="nav-link">{{category.name}}</a></li>
+                    <li class="nav-item"><a href="{% url 'showCate' category.id %}" class="nav-link" id="cate{{category.id}}">{{category.name}}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
