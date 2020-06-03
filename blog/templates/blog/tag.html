@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
 <div class="content">
+<p class="text-primary">Tag:</p>
 {% for article in ArticleList %}
-<article class="row">
-    <p><strong><a href="{% url 'showPost' article.id %}">{{article.title}}</a></strong></p>
-    <p class="info"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time>
-    </small>
-    </p>
+<hr style="border: 1px dotted #007bff;">
+<article>
+    <span><strong><a href="{% url 'showPost' article.id %}">{{article.title}}</a></strong></span>
+    <span class="info" style="float: right;"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time></small>
+    </span>
 </article>
 {% endfor %}
 </div>
