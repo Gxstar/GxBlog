@@ -46,8 +46,12 @@ def home(request):
 def showPost(request,article_id):
     global context
     article=Article.objects.get(id=article_id)
-    context['article']=article
-    return render(request,'blog/post.html',context)
+    PostContext={
+        'article':article,
+        'CategoryId':article.category.id
+    }
+    MergeContext={**context,**PostContext}
+    return render(request,'blog/post.html',MergeContext)
 # 分类列表展示页面
 def showCate(request,category_id):
     global context
@@ -59,4 +63,7 @@ def showCate(request,category_id):
 # 标签列表展示页面
 def showTag(request,tag_id):
     global context
-    return render(request,'blog/tag.html',context)
+    PostList=Article.objects.filter(tag__id=tag_id)
+    HomeContext=getPage(request,PostList)
+    MergeContext={**context,**HomeContext}
+    return render(request,'blog/tag.html',MergeContext)

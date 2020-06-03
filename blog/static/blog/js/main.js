@@ -18,10 +18,15 @@ $(function(){
     $(".content img").css("height",imgwidth*0.75);
     // 设置分类页面调整显示
     $("#navbar a").removeClass("active");
-    if (ActiveCate==0) {
-        $("#index").addClass("active");
-    } else {
-        var aid="cate"+ActiveCate.toString();
-        $("#"+aid).addClass("active");
-    }
+    setActiveCate();
  });
+
+function setActiveCate() {
+    if (ActiveCate == 0) {
+        $("#index").addClass("active");
+    }
+    else {
+        var aid = "cate" + ActiveCate.toString();
+        $("#" + aid).addClass("active");
+    }
+}

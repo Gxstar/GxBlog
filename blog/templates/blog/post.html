@@ -1,4 +1,5 @@
 {% extends "blog/layout.html" %}
+{% load static %}
 {% block content %}
 <article style="padding: 2rem;">
 <header class="postheader">
@@ -15,5 +16,12 @@
 </article>
 <script>
     $(".postheader").css({'background':'url({{article.cover}}) no-repeat','background-size':'cover','margin-bottom':'0px'});
+    var ActiveCate=parseInt("{{CategoryId}}");
+    if (ActiveCate==0) {
+        $("#index").addClass("active");
+    } else {
+        var aid="cate"+ActiveCate.toString();
+        $("#"+aid).addClass("active");
+    }
 </script>
 {% endblock %}
