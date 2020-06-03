@@ -2,16 +2,17 @@
 {% load static %}
 {% block content %}
 <div class="content">
-<p class="text-primary">Tag:{{tag.name}}</p>
+<p class="text-muted">Tag:{{tag.name}}</p>
+<hr style="margin:0px;background-color:#eee;height:0.5px;border:none;" />
 {% for article in ArticleList %}
-<hr style="border: 0.5px dotted black;">
-<article>
+<article style="margin: 10px 0px;">
     <span><a href="{% url 'showPost' article.id %}">{{article.title}}</a></span>
     <span class="info" style="float: right;"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time></small>
     </span>
 </article>
 {% endfor %}
 </div>
+<br>
 <!-- 分页 -->
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">

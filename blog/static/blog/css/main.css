@@ -20,7 +20,6 @@ header{
 }
 .content img{
   max-width:100% !important;
-  min-width:100% !important;
 }
 .postheader{
   height: 300px;
