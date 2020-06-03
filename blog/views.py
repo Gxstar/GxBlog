@@ -66,4 +66,6 @@ def showTag(request,tag_id):
     PostList=Article.objects.filter(tag__id=tag_id)
     HomeContext=getPage(request,PostList)
     MergeContext={**context,**HomeContext}
+    TagName=Tag.objects.get(id=tag_id)
+    MergeContext['tag']=TagName
     return render(request,'blog/tag.html',MergeContext)
