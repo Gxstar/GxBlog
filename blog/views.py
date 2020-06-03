@@ -69,3 +69,7 @@ def showTag(request,tag_id):
     TagName=Tag.objects.get(id=tag_id)
     MergeContext['tag']=TagName
     return render(request,'blog/tag.html',MergeContext)
+#写文章
+def createPost(request):
+    global context
+    return render(request,'blog/createPost.html',context)
