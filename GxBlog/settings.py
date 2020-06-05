@@ -25,13 +25,12 @@ SECRET_KEY = 'idwf%6v@4@i3bta^teqe#c!hpt^gg5u3n*v7$==qtk++=01ir6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['121.196.12.157','127.0.0.1','172.16.91.26','www.gxstar123.cn','gxstar123.cn']
+ALLOWED_HOSTS = ['121.196.12.157', '127.0.0.1', '172.16.91.26', 'www.gxstar123.cn', 'gxstar123.cn']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    # 'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +78,6 @@ WSGI_APPLICATION = 'GxBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'django',
         'USER': 'gxstar123',
         'PASSWORD': 'gx19930804',
@@ -127,4 +125,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'staticfiles')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]

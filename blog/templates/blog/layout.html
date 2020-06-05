@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -14,53 +15,58 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <style>
-        .return_top{
-            position:fixed;
-            width:60px;
-            height:60px;
-            bottom:60px;
-            right:60px;
-            text-align:center;
-            line-height:60px;
-            text-decoration:none;
-            cursor:pointer;
+        .return_top {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 60px;
+            right: 60px;
+            text-align: center;
+            line-height: 60px;
+            text-decoration: none;
+            cursor: pointer;
             opacity: 0.3;
             display: none;
         }
     </style>
 </head>
+
 <body>
     <!-- 头部导航 -->
     <header>
         <div class="container">
-        <!-- 电脑模式导航 -->
-        <hgroup class="d-none d-sm-block" style="padding-top: 15px;">
-            <nav id="navbar">
-                <ul class="nav nav-pills float-right" style="padding: 10px;">
-                    <li class="nav-item"><a href="{% url 'blogHome'%}" class="nav-link" id="index">首页</a></li>
-                    {% for category in CategoryList %}
-                    <li class="nav-item"><a href="{% url 'showCate' category.id %}" class="nav-link" id="cate{{category.id}}">{{category.name}}</a></li>
-                    {% endfor %}
-                </ul>
-            </nav>
-            <h3><a href="{% url 'blogHome'%}"><img style="height: 64px;" src="{% static 'blog/img/logo.png' %}"/></a></h3>
-        </hgroup>
-        <!-- 移动端导航 -->
-        <hgroup class="bg-light">
-            <nav class="d-sm-none navbar navbar-light navbar-expand-md">
-                <a href="{% url 'blogHome'%}" class="navbar-brand">阿星的日记</a>
-                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#headlist" aria-expanded="false" aria-controls="headlist">
-                    <span class="navbar-toggler-icon"></span>
-                </button>                
-            </nav>
-            <div class="collapse navbar navbar-collapse" id="headlist">
-                <ul class="navbar-nav">
-                    {% for category in CategoryList %}
-                    <li class="nav-item"><a href="{% url 'showCate' category.id %}" class="nav-link" style="color:rgba(0,0,0.9);">{{category.name}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </hgroup>
+            <!-- 电脑模式导航 -->
+            <hgroup class="d-none d-sm-block" style="padding-top: 15px;">
+                <nav id="navbar">
+                    <ul class="nav nav-pills float-right" style="padding: 10px;">
+                        <li class="nav-item"><a href="{% url 'blog_home'%}" class="nav-link" id="index">首页</a></li>
+                        {% for category in category_list %}
+                        <li class="nav-item"><a href="{% url 'show_cate' category.id %}" class="nav-link"
+                                id="cate{{category.id}}">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <h3><a href="{% url 'blog_home'%}"><img style="height: 64px;"
+                            src="{% static 'blog/img/logo.png' %}" /></a></h3>
+            </hgroup>
+            <!-- 移动端导航 -->
+            <hgroup class="bg-light">
+                <nav class="d-sm-none navbar navbar-light navbar-expand-md">
+                    <a href="{% url 'blog_home'%}" class="navbar-brand">阿星的日记</a>
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#headlist"
+                        aria-expanded="false" aria-controls="headlist">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+                <div class="collapse navbar navbar-collapse" id="headlist">
+                    <ul class="navbar-nav">
+                        {% for category in category_list %}
+                        <li class="nav-item"><a href="{% url 'show_cate' category.id %}" class="nav-link"
+                                style="color:rgba(0,0,0.9);">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </hgroup>
         </div>
     </header>
     <div class="container">
@@ -79,23 +85,24 @@
     <script>
         // 添加回到顶部按钮
         //为当前窗口添加滚动条滚动事件（适用于所有可滚动的元素和 window 对象（浏览器窗口））
-        $(window).scroll(function(){
+        $(window).scroll(function () {
             //创建一个变量存储当前窗口下移的高度
             var scroTop = $(window).scrollTop();
             //判断当前窗口滚动高度
             //如果大于100，则显示顶部元素，否则隐藏顶部元素
-            if(scroTop>255){
+            if (scroTop > 255) {
                 $('.return_top').fadeIn(500);
-            }else{
+            } else {
                 $('.return_top').fadeOut(500);
             }
         });
-		    	
+
         //为返回顶部元素添加点击事件
-        $('.return_top').click(function(){
+        $('.return_top').click(function () {
             //将当前窗口的内容区滚动高度改为0，即顶部
-            $("html,body").animate({scrollTop:0},"fast");
+            $("html,body").animate({ scrollTop: 0 }, "slow");
         });
     </script>
 </body>
+
 </html>

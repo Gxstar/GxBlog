@@ -2,35 +2,37 @@
 {% load static %}
 {% block content %}
 <div class="content">
-<p class="text-muted">Tag:{{tag.name}}</p>
-<hr style="margin:0px;background-color:#eee;height:0.5px;border:none;" />
-{% for article in ArticleList %}
-<article style="margin: 10px 0px;">
-    <span><a href="{% url 'showPost' article.id %}">{{article.title}}</a></span>
-    <span class="info" style="float: right;"><small><author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time></small>
+  <p class="text-muted">Tag:{{tag.name}}</p>
+  <hr style="margin:0px;background-color:#eee;height:0.5px;border:none;" />
+  {% for article in article_list %}
+  <article style="margin: 10px 0px;">
+    <span><a href="{% url 'show_post' article.id %}">{{article.title}}</a></span>
+    <span class="info" style="float: right;"><small>
+        <author><a href="">{{article.author.username}}</a></author><span> • </span><time>{{article.createTime}}</time>
+      </small>
     </span>
-</article>
-{% endfor %}
+  </article>
+  {% endfor %}
 </div>
 <br>
 <!-- 分页 -->
 <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item" id="FrontPage">
-        <a class="page-link" href="#" tabindex="-1">上一页</a>
-      </li>
-      {% for page in PageCountList %}
-      <li id="{{page}}" class="page-item"><a class="page-link" href="./?page={{page}}">{{page}}</a></li>
-      {% endfor %}
-      <li class="page-item" id="BackPage">
-        <a class="page-link" href="#">下一页</a>
-      </li>
-    </ul>
+  <ul class="pagination justify-content-center">
+    <li class="page-item" id="FrontPage">
+      <a class="page-link" href="#" tabindex="-1">上一页</a>
+    </li>
+    {% for page in page_count_list %}
+    <li id="{{page}}" class="page-item"><a class="page-link" href="./?page={{page}}">{{page}}</a></li>
+    {% endfor %}
+    <li class="page-item" id="BackPage">
+      <a class="page-link" href="#">下一页</a>
+    </li>
+  </ul>
 </nav>
 <script>
-    var ActivePage=parseInt("{{ActivePage}}");
-    var TotalPage=parseInt("{{PageCount}}");
-    var ActiveCate=parseInt("{{CategoryId}}");
+  var ActivePage = parseInt("{{active_page}}");
+  var TotalPage = parseInt("{{page_count}}");
+  var ActiveCate = parseInt("{{category_id}}");
 </script>
 <script src="{% static 'blog/js/main.js' %}"></script>
 {% endblock %}

@@ -1,39 +1,43 @@
 {% extends "blog/layout.html" %}
 {% load static %}
 {% block content %}
-<article style="padding: 2rem;">
-<header class="postheader">
-    <h3 class="text-light">{{article.title}}</h3>
-</header>
-<div class="content">
-    <p class="info text-muted">
-        <span>作者：</span><a href="." class="text-muted">{{article.author.username}}</a><span> | &nbsp;分类：</span><a href="." class="text-muted">{{article.category}}</a><span> |&nbsp;更新于：</span><time>{{article.updateTime}}</time>
-    </p>
-    <section>
-        {{article.body|safe}}
-    </section>
-</div>
-<!--PC和WAP自适应版-->
-<div id="SOHUCS" ></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = 'cyuRWVFza'; 
-var conf = 'prod_59c59ec88fce178337db42afc1ff9d72'; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+<article>
+    <header class="postheader">
+        <h3 class="text-light">{{article.title}}</h3>
+    </header>
+    <div class="content">
+        <p class="info text-muted">
+            <span>作者：</span><a href="." class="text-muted">{{article.author.username}}</a><span> | &nbsp;分类：</span><a
+                href="." class="text-muted">{{article.category}}</a><span>
+                |&nbsp;更新于：</span><time>{{article.updateTime}}</time>
+        </p>
+        <section>
+            {{article.body|safe}}
+        </section>
+    </div>
+    <!--PC和WAP自适应版-->
+    <div id="SOHUCS"></div>
+    <script type="text/javascript">
+        (function () {
+            var appid = 'cyuRWVFza';
+            var conf = 'prod_59c59ec88fce178337db42afc1ff9d72';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else { var loadJs = function (d, a) { var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement; var b = document.createElement("script"); b.setAttribute("type", "text/javascript"); b.setAttribute("charset", "UTF-8"); b.setAttribute("src", d); if (typeof a === "function") { if (window.attachEvent) { b.onreadystatechange = function () { var e = b.readyState; if (e === "loaded" || e === "complete") { b.onreadystatechange = null; a() } } } else { b.onload = a } } c.appendChild(b) }; loadJs("http://cy-cdn.kuaizhan.com/upload/changyan.js", function () { window.changyan.api.config({ appid: appid, conf: conf }) }); }
+        })(); </script>
 </article>
 <script>
     // 设置封面
-    $(".postheader").css({'background':'url({{article.cover}}) no-repeat','background-size':'cover','margin-bottom':'0px'});
+    $(".postheader").css({ 'background': 'url({{article.cover}}) no-repeat', 'background-size': 'cover', 'margin-bottom': '0px' });
     // 设置当前分类
-    var ActiveCate=parseInt("{{CategoryId}}");
-    if (ActiveCate==0) {
+    var ActiveCate = parseInt("{{category_id}}");
+    if (ActiveCate == 0) {
         $("#index").addClass("active");
     } else {
-        var aid="cate"+ActiveCate.toString();
-        $("#"+aid).addClass("active");
+        var aid = "cate" + ActiveCate.toString();
+        $("#" + aid).addClass("active");
     }
-    
+
 </script>
 {% endblock %}

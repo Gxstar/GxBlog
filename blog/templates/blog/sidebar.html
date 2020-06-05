@@ -8,14 +8,14 @@
                 <img src="{% static 'blog/img/头像.jpg' %}" alt="头像" class="img-fluid rounded" style="width: 60%;">
                 <figcaption class="figure-caption text-center">
                     <form id="logoutForm" action="logout/" method="post" class="navbar-right">
-                    {% csrf_token %}
-                        <a href="{% url 'createPost' %}" class='text-primary'>新文章</a>
+                        {% csrf_token %}
+                        <a href="{% url 'create_post' %}" class='text-primary'>新文章</a>
                         <a type="submit" onclick="document.getElementById('logoutForm').submit()">退出</a>
                     </form>
                 </figcaption>
             </figure>
         </div>
-        
+
     </div>
 </div>
 {% else %}
@@ -29,13 +29,13 @@
 {% endif %}
 <h5 class="text-info">文章分类</h5>
 <p style="line-height: 3rem;">
-{% for category in CategoryList %}
-<a href="{% url 'showCate' category.id %}" class="btn btn-light">{{category.name}}</a>
-{% endfor %}
+    {% for category in category_list %}
+    <a href="{% url 'show_cate' category.id %}" class="btn btn-light">{{category.name}}</a>
+    {% endfor %}
 </p>
 <h5 class="text-info">标签</h5>
 <p style="line-height: 3rem;">
-{% for tag in TagList %}
-<a href="{% url 'showTag' tag.id %}" class="btn btn-light">{{tag.name}}</a>
-{% endfor %}
+    {% for tag in tag_list %}
+    <a href="{% url 'show_tag' tag.id %}" class="btn btn-light">{{tag.name}}</a>
+    {% endfor %}
 </p>
