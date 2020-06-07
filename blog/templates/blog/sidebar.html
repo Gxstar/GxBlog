@@ -23,7 +23,34 @@
     <div class="card-header">Hello</div>
     <figure class="figure card-body">
         <img src="{% static 'blog/img/welcome.png' %}" alt="头像" class="img-fluid rounded">
-        <figcaption class="figure-caption text-center">欢迎</figcaption>
+        <figcaption class="figure-caption text-center">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#login">登录</button>
+            <!-- 模态框：登录 -->
+            <div class="modal fade" id="login">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">登录</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="form-group text-left">
+                                    <label for="username">用户名：</label>
+                                    <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名">
+                                </div>
+                                <div class="form-group text-left">
+                                    <label for="pwd">密码：</label>
+                                    <input type="text" name="pwd" id="pwd" class="form-control" placeholder="请输入密码">
+                                </div>
+                                <button type="submit" class="btn btn-primary" name='login'>登录</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </figcaption>
     </figure>
 </div>
 {% endif %}
