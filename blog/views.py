@@ -3,7 +3,8 @@
 """
 from typing import List
 
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
+from django.contrib import auth
 from bs4 import BeautifulSoup
 from .models import Category, Tag, Article
 
@@ -111,3 +112,22 @@ def create_post(request):
     """
     context = common_context()
     return render(request, 'blog/createPost.html', context)
+
+def login(request):
+    """
+    登录函数
+    """
+    context = common_context()
+    request.session['login_from'] = request.META.get('HTTP_REFERER', '/')
+    if request.method == 'GET':
+        #记住来源的url，如果没有则设置为首页('/')
+        pass
+    else:
+        username=request.POST.get('username')
+        pwd=request.POST.get('pwd')
+        user=auth.authenticate(username=username,password=pwd)
+        if user:
+            auth.login(request,user)
+            return HttpResponseRedirect(request.session['login_from'])
+        else:
+            return HttpResponseRedirect(request.session['login_from'])
