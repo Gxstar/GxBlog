@@ -1,5 +1,12 @@
 {% extends "blog/layout.html" %}
 {% load static %}
 {% block content %}
-<div class="content">这是文章编辑页面</div>
+<div class="content">
+    <form action="save_article/" method="POST">
+        <div class="form-group">
+            <label for="title">文章标题：</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="文章标题">
+        </div>
+    </form>
+</div>
 {% endblock %}
