@@ -56,6 +56,7 @@ def get_page(request, post_list: List) -> dict:
         return page_parameter
     return None
 
+
 def home(request):
     """
     显示主页
@@ -113,6 +114,7 @@ def create_post(request):
     context = common_context()
     return render(request, 'blog/createPost.html', context)
 
+
 def login(request):
     """
     登录函数
@@ -120,14 +122,14 @@ def login(request):
     context = common_context()
     request.session['login_from'] = request.META.get('HTTP_REFERER', '/')
     if request.method == 'GET':
-        #记住来源的url，如果没有则设置为首页('/')
-        pass
+        # 记住来源的url，如果没有则设置为首页('/')
+        return HttpResponseRedirect(request.session['login_from'])
     else:
-        username=request.POST.get('username')
-        pwd=request.POST.get('pwd')
-        user=auth.authenticate(username=username,password=pwd)
+        username = request.POST.get('username')
+        pwd = request.POST.get('pwd')
+        user = auth.authenticate(username=username, password=pwd)
         if user:
-            auth.login(request,user)
+            auth.login(request, user)
             return HttpResponseRedirect(request.session['login_from'])
         else:
             return HttpResponseRedirect(request.session['login_from'])

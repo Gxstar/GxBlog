@@ -46,13 +46,13 @@
                         {% endfor %}
                     </ul>
                 </nav>
-                <h3><a href="{% url 'blog_home'%}"><img style="height: 64px;"
+                <h3><a href="{% url 'index'%}"><img style="height: 64px;"
                             src="{% static 'blog/img/logo.png' %}" /></a></h3>
             </hgroup>
             <!-- 移动端导航 -->
             <hgroup class="bg-light">
                 <nav class="d-sm-none navbar navbar-light navbar-expand-md">
-                    <a href="{% url 'blog_home'%}" class="navbar-brand">阿星的日记</a>
+                    <a href="{% url 'index'%}" class="navbar-brand">阿星的小站</a>
                     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#headlist"
                         aria-expanded="false" aria-controls="headlist">
                         <span class="navbar-toggler-icon"></span>
@@ -60,6 +60,7 @@
                 </nav>
                 <div class="collapse navbar navbar-collapse" id="headlist">
                     <ul class="navbar-nav">
+                        <li class="nav-item"><a href="{% url 'blog_home'%}" class="nav-link" id="index" style="color:rgba(0,0,0.9);">首页</a></li>
                         {% for category in category_list %}
                         <li class="nav-item"><a href="{% url 'show_cate' category.id %}" class="nav-link"
                                 style="color:rgba(0,0,0.9);">{{category.name}}</a></li>

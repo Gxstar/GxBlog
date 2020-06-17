@@ -12,5 +12,5 @@ urlpatterns = [
     path('category_<int:category_id>/', views.show_cate, name="show_cate"),
     path('tag_<int:tag_id>/', views.show_tag, name="show_tag"),
     path('create/', views.create_post, name="create_post"),
-    path(r'login/',views.login, name="login")
+    path(r'login/', views.login, name="login")
 ]

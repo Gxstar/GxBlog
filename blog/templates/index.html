@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 静态资源引用 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap相关js文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+    <title>阿星的小站</title>
+</head>
+<style>
+    body{
+        background-image: url(https://hacgapp.net/img/topBG.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+    }
+    .logo{
+        padding-top: 100px;
+    }
+    .logo img{
+        max-width: 150px;
+    }
+</style>
+<body>
+    <div class="logo text-center">
+        <img src="{% static 'blog/img/头像.jpg' %}" class="rounded-circle" alt="头像">
+        <hr>
+        <h2 class="text-light">阿星的小站</h2>
+        <hr>
+        <a href="./blog/"><h5 class="text-light">博客</h5></a>
+    </div>
+</body>
+</html>
