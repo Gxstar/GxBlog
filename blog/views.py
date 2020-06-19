@@ -107,14 +107,6 @@ def show_tag(request, tag_id):
     return render(request, 'blog/tag.html', merge_context)
 
 
-def create_post(request):
-    """
-    写文章
-    """
-    context = common_context()
-    return render(request, 'blog/createPost.html', context)
-
-
 def login(request):
     """
     登录函数

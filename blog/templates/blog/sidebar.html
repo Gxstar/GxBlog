@@ -9,7 +9,7 @@
                 <figcaption class="figure-caption text-center">
                     <form id="logoutForm" action="logout/" method="post" class="navbar-right">
                         {% csrf_token %}
-                        <a href="{% url 'create_post' %}" class='text-primary'>新文章</a>
+                        <a href="{% url 'admin' %}" class='text-primary'>管理</a>
                         <a type="submit" onclick="document.getElementById('logoutForm').submit()">退出</a>
                     </form>
                 </figcaption>
