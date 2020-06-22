@@ -5,9 +5,11 @@ from typing import List
 
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
+from django.contrib.auth.models import User
 from bs4 import BeautifulSoup
 from .models import Category, Tag, Article
 
+from GxBlog import views as gx
 
 def common_context() -> dict:
     """
@@ -109,19 +111,28 @@ def show_tag(request, tag_id):
 
 def login(request):
     """
-    登录函数
+    登录注册函数
     """
-    context = common_context()
     request.session['login_from'] = request.META.get('HTTP_REFERER', '/')
     if request.method == 'GET':
         # 记住来源的url，如果没有则设置为首页('/')
-        return HttpResponseRedirect(request.session['login_from'])
+        home(request)
     else:
         username = request.POST.get('username')
         pwd = request.POST.get('pwd')
-        user = auth.authenticate(username=username, password=pwd)
-        if user:
-            auth.login(request, user)
+        bg_img=gx.get_background()
+        img_url=bg_img['url']
+        if 'login' in request.POST:
+            '''如果点击的是登录按钮
+            调用auth中的方法创建user对象进行登录
+            '''
+            user = auth.authenticate(username=username, password=pwd)
+            if user:
+                auth.login(request, user)
             return HttpResponseRedirect(request.session['login_from'])
         else:
-            return HttpResponseRedirect(request.session['login_from'])
+            if User.objects.filter(username=username):
+                return render(request, 'admin/log.html', {'err_msg': "用户名重复，请重新输入！",'img_url':img_url})
+            else:
+                User.objects.create_user(username, pwd)
+                return render(request, 'admin/log.html', {'err_msg': "用户创建成功，请输入账号密码登录！",'img_url':img_url})
