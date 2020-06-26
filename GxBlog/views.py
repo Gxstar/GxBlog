@@ -28,8 +28,8 @@ def admin(request):
     """
     跳转后台管理页面
     """
-    img_url=get_background()['url']
+    img_url = get_background()['url']
     if request.user.is_authenticated:
         return render(request, 'admin/admin.html')
     else:
-        return render(request,'admin/log.html',{'err_msg':"",'img_url':img_url})
+        return render(request, 'admin/log.html', {'err_msg': "", 'img_url': img_url})

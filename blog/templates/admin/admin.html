@@ -8,31 +8,47 @@
     <link href="{% static 'blog/img/favicon.ico' %}" rel="icon" type="image/x-ico">
     <!-- 静态资源引用 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'admin/css/admin.css' %}">
     <!-- bootstrap相关js文件 -->
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <title>阿星的小站</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a href="{% url 'index'%}" class="navbar-brand">阿星的小站</a>
+            <a href="{% url 'index' %}" class="navbar-brand">阿星的小站</a>
+            <div class="collapse navbar-collapse">
+                <div class="mr-auto"></div>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="." class="nav-link disabled">当前用户：{{user.username}}</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">退出登录</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-    <div class="row justify-content-between">
-        <div class="col-2" style="border-right: 1px solid black;">
-            <nav class="nav flex-column">
-                <a href="." class="nav-link active" id="v-tab">我的文章</a>
-                <a href="." class="nav-link" id="v-tab">账号信息</a>
-                <a href="." class="nav-link" id="v-tab">系统设置</a>
-            </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" id="page_siderbar">
+                <div class="list-group">
+                    <a href="." class="list-group-item list-group-item-action active"><i class="fas fa-home"></i>&nbsp;首页</a>
+                    <a href="." class="list-group-item list-group-item-action"><i class="fas fa-book"></i>&nbsp;我的文章</a>
+                    <a href="." class="list-group-item list-group-item-action"><i class="fas fa-th-list"></i>&nbsp;分类管理</a>
+                    <a href="." class="list-group-item list-group-item-action"><i class="fas fa-tag"></i>&nbsp;标签管理</a>
+                    <a href="." class="list-group-item list-group-item-action"><i class="fas fas-comments"></i>&nbsp;评论管理</a>
+                </div>
+            </div>
+            <div class="col-9" id="page_container">
+                <footer class="text-center">
+                    {% include "blog/footer.html" %}
+                </footer>
+            </div>
         </div>
-        <div class="col-9"></div>
     </div>
-    
-    <footer class="text-center">
-        {% include "blog/footer.html" %}
-    </footer>
+
+
 </body>

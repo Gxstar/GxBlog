@@ -9,11 +9,13 @@
     <link href="{% static 'blog/img/favicon.ico' %}" rel="icon" type="image/x-ico">
     <!-- 静态资源引用 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
     <!-- bootstrap相关js文件 -->
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <style>
         .return_top {
             position: fixed;
@@ -25,7 +27,7 @@
             line-height: 60px;
             text-decoration: none;
             cursor: pointer;
-            opacity: 0.3;
+            opacity: 0.8;
             display: none;
         }
     </style>
@@ -81,7 +83,7 @@
         <footer class="text-center">
             {% include "blog/footer.html" %}
         </footer>
-        <img src="https://img.icons8.com/dotty/80/000000/circled-up-2.png" alt="返回顶部" class="return_top">
+        <img src="https://img.icons8.com/clouds/50/000000/long-arrow-up.png" alt="返回顶部" class="return_top">
     </div>
     <script>
         // 添加回到顶部按钮
