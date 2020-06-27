@@ -33,3 +33,16 @@ def admin(request):
         return render(request, 'admin/admin.html')
     else:
         return render(request, 'admin/log.html', {'err_msg': "", 'img_url': img_url})
+
+
+def action(request, action):
+    if action == "home":
+        return render(request, 'admin/home.html', {'param': action})
+    elif action == "article":
+        return render(request, 'admin/article.html', {'param': action})
+    elif action == "category":
+        return render(request, 'admin/category.html', {'param': action})
+    elif action == "tag":
+        return render(request, 'admin/tag.html', {'param': action})
+    else:
+        return render(request, 'admin/comment.html', {'param': action})
