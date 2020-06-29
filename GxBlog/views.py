@@ -3,11 +3,13 @@
 '''
 from bs4 import BeautifulSoup
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 
 
-def index(requests):
-    return render(requests, "index.html", get_background())
+def index(request):
+    '''网站首页
+    '''
+    return render(request, "index.html", get_background())
 
 
 def get_background():
@@ -18,8 +20,8 @@ def get_background():
     context = {}
     origin_url = "https://cn.bing.com/HPImageArchive.aspx?idx=0&n=1"
     xml_file = requests.get(origin_url).content
-    bs = BeautifulSoup(xml_file, "lxml")
-    result_url = "https://cn.bing.com"+bs.url.string
+    bs_parse = BeautifulSoup(xml_file, "lxml")
+    result_url = "https://cn.bing.com"+bs_parse.url.string
     context['url'] = result_url
     return context
 
@@ -30,19 +32,22 @@ def admin(request):
     """
     img_url = get_background()['url']
     if request.user.is_authenticated:
-        return render(request, 'admin/admin.html')
+        return HttpResponseRedirect('./home/')
     else:
         return render(request, 'admin/log.html', {'err_msg': "", 'img_url': img_url})
 
 
-def action(request, action):
-    if action == "home":
-        return render(request, 'admin/home.html', {'param': action})
-    elif action == "article":
-        return render(request, 'admin/article.html', {'param': action})
-    elif action == "category":
-        return render(request, 'admin/category.html', {'param': action})
-    elif action == "tag":
-        return render(request, 'admin/tag.html', {'param': action})
+def action(request, admin_fun):
+    '''
+    后台管理页面的跳转
+    '''
+    if admin_fun == "home":
+        return render(request, 'admin/home.html', {'param': admin_fun})
+    elif admin_fun == "article":
+        return render(request, 'admin/article.html', {'param': admin_fun})
+    elif admin_fun == "category":
+        return render(request, 'admin/category.html', {'param': admin_fun})
+    elif admin_fun == "tag":
+        return render(request, 'admin/tag.html', {'param': admin_fun})
     else:
-        return render(request, 'admin/comment.html', {'param': action})
+        return render(request, 'admin/comment.html', {'param': admin_fun})

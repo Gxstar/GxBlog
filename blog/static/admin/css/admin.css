@@ -7,3 +7,8 @@
         margin-bottom: 1.5rem;
     }
 }
+#page_container{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 2rem 1.5rem;
+}

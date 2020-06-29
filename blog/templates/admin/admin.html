@@ -42,14 +42,14 @@
                     <a href="{% url 'action' 'comment' %}" class="list-group-item list-group-item-action"><i class="fas fas-comments"></i>&nbsp;评论管理</a>
                 </div>
             </div>
-            <div class="col-9" id="page_container">
+            <div class="col-9 rounded" id="page_container">
                 {% block content %}{% endblock %}
-                <footer class="text-center">
-                    {% include "blog/footer.html" %}
-                </footer>
+                
             </div>
         </div>
     </div>
-
+    <footer class="text-center">
+        {% include "blog/footer.html" %}
+    </footer>
 
 </body>
