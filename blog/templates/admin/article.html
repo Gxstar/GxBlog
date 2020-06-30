@@ -1,4 +1,12 @@
 {% extends "admin/admin.html" %}
 {% block content %}
-这是文章页面{{param}}
+{% load static %}
+<div>
+    <h2 class="text-primary">我的文章</h2>
+    <hr>
+    <h4 class="text-secondary">文章目录<a href="." title="撰写新文章"><i class="float-right fas fa-plus-square"></i></a></h4>   
+</div>
+<script>
+    $("#action_article").addClass("active");
+</script>
 {% endblock %}

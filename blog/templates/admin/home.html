@@ -1,8 +1,20 @@
 {% extends "admin/admin.html" %}
 {% block content %}
+{% load static %}
 <div>
     <h2 class="text-primary">个人中心</h2>
     <hr>
+    <p><i class="fas fa-user"></i><span>&nbsp;我的资料</span></p>
+    <div>
+        <img src="{% static 'blog/img/头像.jpg' %}" class="img-fluid rounded float-left" alt="头像" style="max-width: 64px;">
+        <div>
+            <span class="h6">用户名：<small>{{user.username}}</small></span>
+            <br>
+            <span class="h6">电子邮箱：<small>{{user.email}}</small></span>
+        </div>
+    </div>
 </div>
-这是管理页面首页{{param}}
+<script>
+    $("#action_home").addClass("active");
+</script>
 {% endblock %}
