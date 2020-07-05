@@ -46,15 +46,20 @@ def action(request, admin_fun):
     article_list = Article.objects.filter(
         author__username=request.user.username)
     param = {'param': admin_fun}
+    # 管理页面主页
     if admin_fun == "home":
         return render(request, 'admin/home.html', param)
+    # 文章管理页面
     elif admin_fun == "article":
         page_context = bg_vw.get_page(request, article_list)
         merge_context = {**param, **page_context}
         return render(request, 'admin/article.html', merge_context)
+    # 分类管理页面
     elif admin_fun == "category":
         return render(request, 'admin/category.html', param)
+    # 标签管理页面
     elif admin_fun == "tag":
         return render(request, 'admin/tag.html', param)
+    # 评论管理页面
     else:
         return render(request, 'admin/comment.html', param)
