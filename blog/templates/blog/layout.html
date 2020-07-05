@@ -16,6 +16,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.4.0/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="{% static 'page.js' %}"></script>
     <style>
         .return_top {
             position: fixed;
@@ -52,24 +53,22 @@
                 </h3>
             </hgroup>
             <!-- 移动端导航 -->
-
-                <nav class="d-sm-none navbar navbar-expand-md navbar-light bg-light">
-                    <a href="{% url 'index'%}" class="navbar-brand">阿星的小站</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#headlist" aria-controls="headlist" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="headlist">
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li class="nav-item"><a href="{% url 'blog_home'%}" class="nav-link" id="index">首页</a></li>
-                            {% for category in category_list %}
-                            <li class="nav-item"><a href="{% url 'show_cate' category.id %}" class="nav-link">{{category.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </nav>
-
+            <nav class="d-sm-none navbar navbar-expand-md navbar-light bg-light">
+                <a href="{% url 'index'%}" class="navbar-brand">阿星的小站</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#headlist" aria-controls="headlist" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="headlist">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item"><a href="{% url 'blog_home'%}" class="nav-link" id="index">首页</a></li>
+                        {% for category in category_list %}
+                        <li class="nav-item"><a href="{% url 'show_cate' category.id %}" class="nav-link">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
     <div class="container">

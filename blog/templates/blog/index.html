@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 {% for article in article_list %}
-<article class="row content">
+<article class="row content rounded">
   <div class="col-5">
     <a href="{% url 'show_post' article.id %}"><img src="{{article.cover}}" alt="{{article.title}}"
         class="img-thumbnail" style="min-width: 100%;"></a>
