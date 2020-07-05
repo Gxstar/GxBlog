@@ -4,6 +4,8 @@
 from bs4 import BeautifulSoup
 import requests
 from django.shortcuts import render, HttpResponseRedirect
+from blog import views as bg_vw
+from blog.models import Category, Tag, Article
 
 
 def index(request):
@@ -41,13 +43,18 @@ def action(request, admin_fun):
     '''
     后台管理页面的跳转
     '''
+    article_list = Article.objects.filter(
+        author__username=request.user.username)
+    param = {'param': admin_fun}
     if admin_fun == "home":
-        return render(request, 'admin/home.html', {'param': admin_fun})
+        return render(request, 'admin/home.html', param)
     elif admin_fun == "article":
-        return render(request, 'admin/article.html', {'param': admin_fun})
+        page_context = bg_vw.get_page(request, article_list)
+        merge_context = {**param, **page_context}
+        return render(request, 'admin/article.html', merge_context)
     elif admin_fun == "category":
-        return render(request, 'admin/category.html', {'param': admin_fun})
+        return render(request, 'admin/category.html', param)
     elif admin_fun == "tag":
-        return render(request, 'admin/tag.html', {'param': admin_fun})
+        return render(request, 'admin/tag.html', param)
     else:
-        return render(request, 'admin/comment.html', {'param': admin_fun})
+        return render(request, 'admin/comment.html', param)

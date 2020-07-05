@@ -1,6 +1,15 @@
 {% extends "admin/admin.html" %}
 {% block content %}
-这是分类页面{{param}}
+{% load static %}
+<div>
+    <h2 class="text-primary">分类管理</h2>
+    <hr>
+    {% if not user.is_superuser %}
+    <p class="text-warning">你不是管理员，请登录后再来看看吧</p>
+    {% else %}
+    <p class="text-success">您是管理员</p>
+    {% endif %}
+</div>
 <script>
     $("#action_category").addClass("active");
 </script>
