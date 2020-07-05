@@ -34,10 +34,12 @@ def get_page(request, post_list: List) -> dict:
     page_count = int(post_count/5) + \
         1 if post_count % 5 != 0 else int(post_count/5)
     page_count_list = list(range(1, page_count+1))
+    temp = 1
     if request.method == 'GET':
         page = request.GET.get('page')
         if page is None:
             page = 1
+            temp = 0  # 存储当前页码为0的情况
         # 判断页码参数是否可以转化为整数
         elif page.isnumeric():
             page = int(page)
@@ -49,6 +51,8 @@ def get_page(request, post_list: List) -> dict:
             bs_doc = BeautifulSoup(val.body, "lxml")
             i = bs_doc.get_text().strip()[0:156]
             article_list[index].info = i
+        if temp == 0:
+            page = 0
         page_parameter = {
             'post_count': post_count,
             'page_count': page_count,
@@ -131,9 +135,9 @@ def login(request):
             return HttpResponseRedirect(request.session['login_from'])
         else:
             if User.objects.filter(username=username):
-                return render(request, 'admin/log.html', \
-                    {'err_msg': "用户名重复，请重新输入！", 'img_url': img_url})
+                return render(request, 'admin/log.html',
+                              {'err_msg': "用户名重复，请重新输入！", 'img_url': img_url})
             else:
                 User.objects.create_user(username, pwd)
-                return render(request, 'admin/log.html', \
-                    {'err_msg': "用户创建成功，请输入账号密码登录！", 'img_url': img_url})
+                return render(request, 'admin/log.html',
+                              {'err_msg': "用户创建成功，请输入账号密码登录！", 'img_url': img_url})

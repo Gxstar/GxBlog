@@ -1,7 +1,7 @@
 $(function () {
     $(`li[id=${ActivePage}]`).addClass('active');
     // 处理第一页最后一页按钮不可用
-    if (ActivePage == 1) {
+    if (ActivePage == 1 || ActivePage == 0) {
         $("#FrontPage").addClass('disabled');
     };
     if (ActivePage == TotalPage) {
