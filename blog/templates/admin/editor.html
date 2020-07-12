@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="editor">
+        <p>Here goes the initial content of the editor.</p>
+    </div>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'),{
+                toolbar: {
+					items: [
+						'|',
+						'heading',
+						'bold',
+						'italic',
+						'link',
+						'bulletedList',
+						'numberedList',
+						'|',
+						'indent',
+						'outdent',
+                        '|',
+                        'ckfinder',
+						'imageUpload',
+						'blockQuote',
+						'insertTable',
+						'mediaEmbed',
+						'undo',
+						'redo',
+						'codeBlock',
+						'fontSize',
+						'fontFamily',
+						'code'
+					]
+				},
+				language: 'zh-cn',
+				image: {
+					toolbar: [
+						'imageTextAlternative',
+						'imageStyle:full',
+						'imageStyle:side'
+					]
+                },
+                ckfinder:{
+                    uploadUrl:'',
+                },
+				table: {
+					contentToolbar: [
+						'tableColumn',
+						'tableRow',
+						'mergeTableCells'
+					]
+				},
+				licenseKey: '',
+				
+            })
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+
+</html>

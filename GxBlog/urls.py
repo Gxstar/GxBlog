@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', views.admin, name="admin"),
     path('', views.index, name="index"),
     path('blog/', include('blog.urls')),
+    path('admin/edit_<int:article_id>/',views.article_edit,name="edit"),
     re_path('^admin/(.+)/$',views.action,name="action")
 ]

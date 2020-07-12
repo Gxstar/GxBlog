@@ -9,7 +9,7 @@
     <article style="margin: 10px 0px;">
         <span><a href="{% url 'show_post' article.id %}">{{article.title}}</a></span>
         <span class="info" style="float: right;"><small>
-                <author><a href="">编辑</a></author><span> •发布时间
+                <author><a href="{% url 'edit' article.id %}">编辑</a></author><span> •发布时间
                 </span><time>{{article.createTime}}</time>
             </small>
         </span>

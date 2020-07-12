@@ -63,3 +63,6 @@ def action(request, admin_fun):
     # 评论管理页面
     else:
         return render(request, 'admin/comment.html', param)
+
+def article_edit(request,article_id):
+    return render(request,'admin/editor.html')
