@@ -1,75 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "admin/admin.html" %}
+{% block content %}
+{% load static %}
+<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+<div>
+    <h2 class="text-primary">文章编辑</h2>
+    <hr>
+    <form action="." method="post">
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" value="测试标题" placeholder="文章标题" disabled>
+        </div>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">分类</span>
+            </div>
+            <select class="form-control" id="category">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">封面外链地址</span>
+            </div>
+            <input type="url" name="cover" id="cover">
+        </div>
+        <br>
+        <textarea name="editor"></textarea>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+        <script>
+            CKEDITOR.replace('editor');
+        </script>
 
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
-    <title>Document</title>
-</head>
-
-<body>
-    <div id="editor">
-        <p>Here goes the initial content of the editor.</p>
-    </div>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'),{
-                toolbar: {
-					items: [
-						'|',
-						'heading',
-						'bold',
-						'italic',
-						'link',
-						'bulletedList',
-						'numberedList',
-						'|',
-						'indent',
-						'outdent',
-                        '|',
-                        'ckfinder',
-						'imageUpload',
-						'blockQuote',
-						'insertTable',
-						'mediaEmbed',
-						'undo',
-						'redo',
-						'codeBlock',
-						'fontSize',
-						'fontFamily',
-						'code'
-					]
-				},
-				language: 'zh-cn',
-				image: {
-					toolbar: [
-						'imageTextAlternative',
-						'imageStyle:full',
-						'imageStyle:side'
-					]
-                },
-                ckfinder:{
-                    uploadUrl:'',
-                },
-				table: {
-					contentToolbar: [
-						'tableColumn',
-						'tableRow',
-						'mergeTableCells'
-					]
-				},
-				licenseKey: '',
-				
-            })
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-</body>
-
-</html>
+    </form>
+</div>
+<script>
+    $("#action_article").addClass("active");
+</script>
+{% endblock %}
