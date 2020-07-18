@@ -113,6 +113,21 @@ def show_tag(request, tag_id):
     merge_context['tag'] = tag_name
     return render(request, 'blog/tag.html', merge_context)
 
+def article_edit(request,article_id):
+    '''
+    文章编辑入口
+    '''
+    article=Article.objects.get(id=article_id)
+    context={
+        "title":article.title,
+        "cover":article.cover,
+        "category_list":Category.objects.all(),
+        "category":article.category,
+        "tag_list":Tag.objects.all(),
+        "tag":article.tag.all(),
+        "body":article.body,
+    }
+    return render(request,'admin/editor.html',context)
 
 def login(request):
     """

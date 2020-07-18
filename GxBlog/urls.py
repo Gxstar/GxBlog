@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include,re_path
 from . import views
+from blog import views as bg_views
 
 urlpatterns = [
     path('admin1/', admin.site.urls),
     path('admin/', views.admin, name="admin"),
     path('', views.index, name="index"),
     path('blog/', include('blog.urls')),
-    path('admin/edit_<int:article_id>/',views.article_edit,name="edit"),
+    path('admin/edit_<int:article_id>/',bg_views.article_edit,name="edit"),
     re_path('^admin/(.+)/$',views.action,name="action")
 ]

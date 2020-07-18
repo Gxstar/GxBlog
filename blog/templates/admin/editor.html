@@ -3,21 +3,21 @@
 {% load static %}
 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <div>
-    <h2 class="text-primary">文章编辑</h2>
+    <h2 class="text-primary">{{文章编辑}}</h2>
     <hr>
     <form action="." method="post">
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" value="测试标题" placeholder="文章标题" disabled>
+            <input type="text" class="form-control" value="{{title}}" placeholder="文章标题" disabled>
         </div>
         <br>
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">分类</span>
             </div>
-            <select class="form-control" id="category">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select class="form-control custom-select" id="category">
+                {% for cate in category_list %}
+                <option value="{{cate.name}}">{{cate.name}}</option>
+                {% endfor %}
             </select>
         </div>
         <br>
@@ -25,21 +25,28 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">封面外链地址</span>
             </div>
-            <input type="url" name="cover" id="cover">
+            <input type="url" name="cover" id="cover" class="form-control" value="{{cover}}">
         </div>
         <br>
-        <textarea name="editor"></textarea>
+        <textarea name="editor">{{body|safe}}</textarea>
         <br>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">提交</button>
         </div>
         <script>
-            CKEDITOR.replace('editor');
+            CKEDITOR.replace('editor',{'height':'450px'}); 
         </script>
 
     </form>
 </div>
 <script>
     $("#action_article").addClass("active");
+    
+    $('#category option').each(function() {
+        var val=$(this).val();
+        if (val=="{{category}}") {
+            $(this).attr("selected","selected");
+        }
+    })
 </script>
 {% endblock %}
