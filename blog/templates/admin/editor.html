@@ -1,20 +1,25 @@
 {% extends "admin/admin.html" %}
 {% block content %}
 {% load static %}
+{% if user == author %}
 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <div>
     <h2 class="text-primary">{{文章编辑}}</h2>
     <hr>
-    <form action="." method="post">
+    <form action="article_save/" method="post">
+        {% csrf_token %}
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" value="{{title}}" placeholder="文章标题" disabled>
+            <div class="input-group-prepend">
+                <span class="input-group-text">标题</span>
+            </div>
+            <input type="text" name="title" id="title" class="form-control" value="{{title}}" placeholder="文章标题">
         </div>
         <br>
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">分类</span>
             </div>
-            <select class="form-control custom-select" id="category">
+            <select class="form-control custom-select" id="category" name="category">
                 {% for cate in category_list %}
                 <option value="{{cate.name}}">{{cate.name}}</option>
                 {% endfor %}
@@ -34,19 +39,21 @@
             <button type="submit" class="btn btn-primary">提交</button>
         </div>
         <script>
-            CKEDITOR.replace('editor',{'height':'450px'}); 
+            CKEDITOR.replace('editor', { 'height': '550px' });
+            $('#category option').each(function () {
+                var val = $(this).val();
+                if (val == "{{category}}") {
+                    $(this).attr("selected", "selected");
+                }
+            })
         </script>
 
     </form>
 </div>
+{% else %}
+不是文章作者，请登录文章作者后编辑！
+{% endif %}
 <script>
     $("#action_article").addClass("active");
-    
-    $('#category option').each(function() {
-        var val=$(this).val();
-        if (val=="{{category}}") {
-            $(this).attr("selected","selected");
-        }
-    })
 </script>
 {% endblock %}

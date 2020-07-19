@@ -1,4 +1,7 @@
 $(function () {
+    if (ActivePage==0) {
+        ActivePage=1;
+    }
     $(`li[id=${ActivePage}]`).addClass('active');
     // 处理第一页最后一页按钮不可用
     if (ActivePage == 1 || ActivePage == 0) {

@@ -120,6 +120,7 @@ def article_edit(request,article_id):
     article=Article.objects.get(id=article_id)
     context={
         "title":article.title,
+        "author":article.author,
         "cover":article.cover,
         "category_list":Category.objects.all(),
         "category":article.category,
@@ -128,6 +129,13 @@ def article_edit(request,article_id):
         "body":article.body,
     }
     return render(request,'admin/editor.html',context)
+
+def article_save(request,article_id):
+    '''
+    保存文章
+    '''
+    a=10
+    pass
 
 def login(request):
     """

@@ -24,5 +24,6 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('blog/', include('blog.urls')),
     path('admin/edit_<int:article_id>/',bg_views.article_edit,name="edit"),
+    re_path('^admin/edit_(\d+)/article_save/$',bg_views.article_save,name="save"),
     re_path('^admin/(.+)/$',views.action,name="action")
 ]
