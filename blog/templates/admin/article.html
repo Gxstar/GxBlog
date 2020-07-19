@@ -5,13 +5,17 @@
 <div>
     <h2 class="text-primary">我的文章</h2>
     <hr>
-    <h4 class="text-secondary">文章目录<a href="." title="撰写新文章"><i class="float-right fas fa-plus-square"></i></a></h4>
+    <h4 class="text-secondary">文章目录<a href="{% url 'add'%}" title="撰写新文章"><i class="float-right fas fa-plus-square"></i></a></h4>
     {% for article in article_list %}
     <article style="margin: 10px 0px;">
         <span><a href="{% url 'show_post' article.id %}">{{article.title}}</a></span>
-        <span class="info" style="float: right;"><small>
-                <author><a href="{% url 'edit' article.id %}">编辑</a></author><span> •发布时间
-                </span><time>{{article.createTime}}</time>
+        <span class="info" style="float: right;">
+            <small>
+                <a href="{% url 'edit' article.id %}">编辑</a>
+                <span> •</span>
+                <a href="{% url 'delete' article.id %}">删除</a>
+                <span> •发布时间</span>
+                <time>{{article.createTime}}</time>
             </small>
         </span>
     </article>

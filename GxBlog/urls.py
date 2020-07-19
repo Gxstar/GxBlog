@@ -23,7 +23,12 @@ urlpatterns = [
     path('admin/', views.admin, name="admin"),
     path('', views.index, name="index"),
     path('blog/', include('blog.urls')),
+    path('admin/add/',bg_views.article_add,name="add"),
     path('admin/edit_<int:article_id>/',bg_views.article_edit,name="edit"),
+    path('admin/delete_<int:article_id>/',bg_views.article_delete,name="delete"),
+
+    # 正则匹配
+    re_path('^admin/add/article_save/$',bg_views.article_save,name="new_save"),
     re_path('^admin/edit_(\d+)/article_save/$',bg_views.article_save,name="save"),
     re_path('^admin/(.+)/$',views.action,name="action")
 ]

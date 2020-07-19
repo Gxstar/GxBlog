@@ -43,7 +43,7 @@ class Article(models.Model):
     cover = models.URLField(
         '封面地址', default='https://i.loli.net/2020/04/08/IHWehlbkQ5nxEma.jpg')
     body = RichTextField()
-    tag = models.ManyToManyField(Tag, verbose_name='文章标签', blank=True, null=True)
+    tag = models.ManyToManyField(Tag, verbose_name='文章标签', blank=True)
     createTime = models.DateTimeField('创建时间', auto_now_add=True)
     updateTime = models.DateTimeField('修改时间', auto_now=True)
     category = models.ForeignKey(
