@@ -35,10 +35,22 @@
         <br>
         <textarea name="editor">{{body|safe}}</textarea>
         <br>
+        <div class="input-group" id="article_tag">
+            <div class="input-group-prepend">
+                <span class="input-group-text">标签：</span>
+            </div>
+            <input type="text" id="tag_name" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-outline-success" type="button" onclick="add_tag()"><i
+                        class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        <hr>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">提交</button>
         </div>
         <script>
+            // form标签内部一些事务处理
             CKEDITOR.replace('editor', { 'height': '550px' });
             $('#category option').each(function () {
                 var val = $(this).val();
@@ -46,8 +58,22 @@
                     $(this).attr("selected", "selected");
                 }
             })
+            // 文章标签添加按钮，纯js实现安全不保障
+            function add_tag() {
+                var tag_value = $("#tag_name").val();
+                $("#article_tag").after(
+                    "<br><div class='btn-group btn-group-sm' role='group'>\
+                        <button type='button' class='btn btn-secondary' disabled>"+tag_value+"</button>\
+                        <button type='button' class='btn btn-danger' onclick='del_tag'><i\
+                        class='fas fa-minus'></i></button >\
+                    </div>"
+                );
+            }
+            // 删除标签
+            function del_tag() {
+                $(this).remove();
+            }
         </script>
-
     </form>
 </div>
 {% else %}

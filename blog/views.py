@@ -144,7 +144,7 @@ def article_save(request, article_id=0):
     article.cover = request.POST['cover']
     article.author = request.user
     for i in Category.objects.all():
-        if(i.name == request.POST['category']):
+        if i.name == request.POST['category']:
             article.category = i
             break
     article.body = request.POST['editor']
